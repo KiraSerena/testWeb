@@ -2,12 +2,15 @@ package com.example.demo.Controllers;
 
 import com.example.demo.MyUser;
 import com.example.demo.services.UserService;
-import com.example.demo.services.UserServiceImp;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 
 @Controller
@@ -16,7 +19,12 @@ public class HomeController {
 
 
 
-    private UserService userService=new UserServiceImp();
+    private UserService userService= new UserService() {
+        @Override
+        public MyUser getUser(String username, String password) {
+            return null;
+        }
+    };
 
     public HomeController() throws FileNotFoundException {
     }
